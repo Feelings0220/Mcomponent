@@ -1,4 +1,5 @@
 .vk-button {
+  
   --vk-button-font-weight: var(--vk-font-weight-primary);
   --vk-button-border-color: var(--vk-border-color);
   --vk-button-bg-color: var(--vk-fill-color-blank);
@@ -14,6 +15,7 @@
   --vk-button-active-bg-color: var(--vk-button-hover-bg-color);
   --vk-button-outline-color: var(--vk-color-primary-light-5);
   --vk-button-active-color: var(--vk-text-color-primary);
+  
 }
 .vk-button {
   display: inline-flex;

@@ -73,10 +73,11 @@ onMounted(() => {
 
     <Button ref="buttonRef" @click="open">Test Button</Button>
     <Tooltip>
-  <!-- 触发 tooltip 显示的元素，例如一个按钮或链接 -->
-  <button>Hover or Click me</button>
-</Tooltip>
+    <!-- 触发 tooltip 显示的元素，例如一个按钮或链接 -->
+    <button>Hover or Click me</button>
+    </Tooltip>
     <Input  modelValue="输入"></Input>
+
     <Collapse v-model="openedValue">
       <CollapseItem name="1" title="Panel 1">
         <p>这里是第一个面板的内容。</p>
@@ -87,7 +88,9 @@ onMounted(() => {
       <CollapseItem name="3" title="Panel 3" disabled>
         <p>这里是第三个面板的内容，且这个面板是禁用的。</p>
       </CollapseItem>
-    </Collapse>    <Button plain @click="close">Plain Button</Button>
+    </Collapse> 
+    
+    <Button plain @click="close">Plain Button</Button>
     <Button round>Round Button</Button>
     <Button circle>VK</Button>
     <Button disabled>Disabled Button</Button><br/><br/>
