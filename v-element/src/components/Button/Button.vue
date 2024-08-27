@@ -31,8 +31,8 @@
 import { ref } from 'vue'
 // 导入 Button 组件的属性类型定义
 import type { ButtonProps } from './types'
-// 导入 Icon 组件
 import Icon from '../Icon/Icon.vue'
+
 // 定义组件的选项，设置组件名称为 'VkButton'
 defineOptions({
   name: 'VkButton'

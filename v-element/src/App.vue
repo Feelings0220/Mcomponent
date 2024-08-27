@@ -10,7 +10,7 @@ import Input from './components/Input/Input.vue'
 import Collapse from './components/Collapse/Collapse.vue'
 import CollapseItem from './components/Collapse/CollapseItem.vue'
 
-import Item from './components/Collapse/CollapseItem.vue'
+// import Item from './components/Collapse/CollapseItem.vue'
 import Icon from './components/Icon/Icon.vue'
 import { createMessage } from './components/Message/method'
 import type { ButtonInstance } from './components/Button/types'
@@ -80,13 +80,13 @@ onMounted(() => {
 
     <Collapse v-model="openedValue">
       <CollapseItem name="1" title="Panel 1">
-        <p>这里是第一个面板的内容。</p>
+        <p>这里是第一个折叠面板的内容。</p>
       </CollapseItem>
       <CollapseItem name="2" title="Panel 2">
-        <p>这里是第二个面板的内容。</p>
+        <p>这里是第二个折叠面板的内容。</p>
       </CollapseItem>
       <CollapseItem name="3" title="Panel 3" disabled>
-        <p>这里是第三个面板的内容，且这个面板是禁用的。</p>
+        <p>这里是第三个折叠面板的内容，且这个面板是禁用的。</p>
       </CollapseItem>
     </Collapse> 
     
@@ -110,18 +110,18 @@ onMounted(() => {
     <Button size="large" icon="arrow-up">Icon</Button><br/><br/>    
 
     <Collapse v-model="openedValue">
-      <Item name="a" title="Title A">
+      <CollapseItem name="a" title="Title A">
         <h1>headline title</h1>
         <div> this is content a aaa </div>
-      </Item>
-      <Item name="b" title="Title B">
+      </CollapseItem>
+      <CollapseItem name="b" title="Title B">
         <div> this is bbbbb test </div>
-      </Item>
-      <Item name="c" title="Disabled Title" disabled>
+      </CollapseItem>
+      <CollapseItem name="c" title="Disabled Title" disabled>
         <div> this is cccc test </div>
-      </Item>
+      </CollapseItem>
     </Collapse>
-    {{openedValue}}
+
   </main>
 </template>
 
