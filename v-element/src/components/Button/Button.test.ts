@@ -6,7 +6,7 @@ import Icon from '../Icon/Icon.vue'
 
 describe('Button.vue', () => { 
   test('basic button', () => {
-    // 挂载Button组件，并传递props和slots
+    // 挂载Button组件，并传递props和slots,
     const wrapper = mount(Button, {
       props: {
         type: 'primary'
@@ -19,6 +19,7 @@ describe('Button.vue', () => {
     console.log(wrapper.html())
     // 断言组件的class包含'vk-button--primary'
     expect(wrapper.classes()).toContain('vk-button--primary')
+    
     // 断言默认slot的内容为'button'
     expect(wrapper.get('button').text()).toBe('button')
     // 触发按钮的点击事件

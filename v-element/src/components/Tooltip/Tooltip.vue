@@ -67,6 +67,7 @@ const popperOptions = computed(() => {
   }
 })
 
+// 打开工具提示的方法
 const open = () => {
   openTimes++
   console.log('open times', openTimes)
@@ -74,24 +75,30 @@ const open = () => {
   emits('visible-change', true)
 
 }
+// 关闭工具提示的方法
 const close = () => {
   closeTimes++
   console.log('close times', closeTimes)
   isOpen.value = false
   emits('visible-change', false)
 }
+// 防抖处理的打开方法
 const openDebounce = debounce(open, props.openDelay)
+// 防抖处理的关闭方法
 const closeDebounce = debounce(close, props.closeDelay)
 
+// 最终的打开方法，取消关闭防抖并调用打开防抖
 const openFinal = () => {
   closeDebounce.cancel()
   openDebounce()
 }
+// 最终的关闭方法，取消打开防抖并调用关闭防抖
 const closeFinal = () => {
   openDebounce.cancel()
   closeDebounce()
 }
 
+// 切换工具提示显示状态的方法
 const togglePopper = () => {
   if (isOpen.value) {
     closeFinal()
@@ -99,6 +106,7 @@ const togglePopper = () => {
     openFinal()
   }
 }
+// 使用点击外部区域关闭工具提示的钩子
 useClickOutside(popperContainerNode, () => {
   if (props.trigger === 'click' && isOpen.value && !props.manual) {
     closeFinal()
@@ -107,6 +115,7 @@ useClickOutside(popperContainerNode, () => {
     emits('click-outside', true)
   }
 })
+// 绑定事件的方法
 const attachEvents = () => {
   if (props.trigger === 'hover') {
     events['mouseenter'] = openFinal
@@ -115,9 +124,10 @@ const attachEvents = () => {
     events['click'] = togglePopper
   }
 }
-if (!props.manual) {
+if (!props.manual) {    
   attachEvents()
 }
+// 监听manual属性的变化，决定是否绑定事件
 watch(() => props.manual, (isManual) => {
   if (isManual) {
     events = {}
@@ -126,6 +136,7 @@ watch(() => props.manual, (isManual) => {
     attachEvents()
   }
 })
+// 监听trigger属性的变化，重新绑定事件
 watch(() => props.trigger, (newTrigger, oldTrigger) => {
   if (newTrigger !== oldTrigger) {
     // clear the events
@@ -134,6 +145,7 @@ watch(() => props.trigger, (newTrigger, oldTrigger) => {
     attachEvents()
   }
 })
+// 监听isOpen的变化，决定是否创建或销毁Popper实例
 watch(isOpen, (newValue) => {
   if (newValue) {
     if (triggerNode.value && popperNode.value) {
@@ -144,9 +156,11 @@ watch(isOpen, (newValue) => {
   }
 }, { flush: 'post'})
 
+// 组件卸载时销毁Popper实例
 onUnmounted(() => {
   popperInstance?.destroy()
 })
+// 暴露组件的方法
 defineExpose<TooltipInstance>({
   'show': openFinal,
   'hide': closeFinal
