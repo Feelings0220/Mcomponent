@@ -49,6 +49,7 @@ import Input from '../Input/Input.vue'
 import Icon from '../Icon/Icon.vue'
 import type { InputInstance } from '../Input/types'
 
+// 根据值查找选项
 const findOption = (value: string) => {
   const option = props.options.find(option => option.value === value)
   return option ? option : null
@@ -85,6 +86,7 @@ const popperOptions: any = {
     }
   ],
 }
+// 控制下拉菜单的显示与隐藏
 const controlDropdown = (show: boolean) => {
   if (show) {
     tooltipRef.value.show()
@@ -94,6 +96,7 @@ const controlDropdown = (show: boolean) => {
   isDropdownShow.value = show
   emits('visible-change', show)
 }
+// 切换下拉菜单的显示状态
 const toggleDropdown = () => {
   if (props.disabled) return
   if (isDropdownShow.value) {
@@ -102,6 +105,7 @@ const toggleDropdown = () => {
     controlDropdown(true)
   }
 }
+// 处理选项选择事件
 const itemSelect = (e: SelectOption) => {
   if (e.disabled) return
   states.inputValue = e.label
